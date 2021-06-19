@@ -97,6 +97,11 @@ Interval time to check deploying status. (sec)
 
 archive file path to upload. It must exists in your local file system, which means the archive file must be prepared before deployment task.
 
+##### serverSideEncryption
+* Type: `string`
+
+If the object is stored using server-side encryption either with an AWS KMS customer master key (CMK) or an Amazon S3-managed encryption key, the response includes this header with the value of the server-side encryption algorithm used when storing this object in Amazon S3 (for example, AES256, aws:kms)
+
 ##### tagsToAdd
 * Type: `dict`
 * Default:
@@ -138,6 +143,7 @@ gulp.task('deploy', function(cb) {
     versionLabel: '1.0.0',
     sourceBundle: './archive.zip',
     description: 'description here',
+    serverSideEncryption: 'AES256',
     account_id: 'Your AWS accountId',
     tagsToAdd: {'key': 'value' ...},
     tagsToRemove: {'Key': 'value' ...}
